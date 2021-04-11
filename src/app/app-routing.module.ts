@@ -3,14 +3,26 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: 'landing-page-autentificacion',
+    loadChildren: () => import('./paginas/autentificacion/landing-page-autentificacion/landing-page-autentificacion.module').then( m => m.LandingPageAutentificacionPageModule)
+  },
+  {
+    path: 'iniciar-sesion',
+    loadChildren: () => import('./paginas/autentificacion/iniciar-sesion/iniciar-sesion.module').then( m => m.IniciarSesionPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./paginas/autentificacion/registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./paginas/autentificacion/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'landing-page-autentificacion',
     pathMatch: 'full'
-  },
+  }
 ];
 
 @NgModule({

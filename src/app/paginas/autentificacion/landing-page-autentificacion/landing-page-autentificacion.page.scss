@@ -1,0 +1,61 @@
+ion-content {
+  --background: #ffffff;
+  --color: #797979;
+}.aut-buttons {
+  margin: 10px auto;
+  height: 100%;
+  align-items: center;
+  align-content: center;
+  font-family: 'Lato', sans-serif;
+  justify-content: center;
+  text-align: center;
+}
+ion-grid {
+  --ion-grid-padding: 5px;
+  --ion-grid-padding-xs: 5px;
+  --ion-grid-padding-sm: 5px;
+  --ion-grid-padding-md: 5px;
+  --ion-grid-padding-lg: 5px;
+  --ion-grid-padding-xl: 5px;
+  --ion-grid-width: 100%;
+  --ion-grid-width-xs: 100%;
+  --ion-grid-width-sm: 540px;
+  --ion-grid-width-md: 720px;
+  --ion-grid-width-lg: 960px;
+  --ion-grid-width-xl: 1140px;
+}.aut-buttons-grid {
+  margin-top: 70%;
+}
+#is-user {
+  font-style: normal;
+  font-size: small;
+  font-weight: normal;
+}
+#btn-iniciar-sesion {
+  
+}
+.divider {
+  display: flex;
+  
+  &:before,
+  &:after {
+    content: "";
+    flex: 1;
+  }
+}
+.line {
+  align-items: center;
+  margin: 1em -1em;
+  
+  &:before,
+  &:after {
+    height: 1px;
+    margin: 0 1em;
+  }
+}
+.one-line {
+  &:before,
+  &:after {
+    background:#bab5b5;
+  }
+}
