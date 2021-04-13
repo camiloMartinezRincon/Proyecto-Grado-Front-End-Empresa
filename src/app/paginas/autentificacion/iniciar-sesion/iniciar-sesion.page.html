@@ -8,5 +8,21 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="logForm" (ngSubmit)="submitLogForm()">
+    <ion-item>
+      <ion-label position="floating" color="primary"> Correo Electronico </ion-label>
+      <ion-input formControlName="logEmail" type="email" placeholder="Correo Electronico" required></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="floating" color="primary"> Contraseña </ion-label>
+      <ion-input formControlName="logPassword" type="password" placeholder="Contraseña" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="primary" shape="round" type="submit"> Iniciar Sesion </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
