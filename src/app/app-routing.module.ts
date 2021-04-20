@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/autentificacion/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
   {
+    path: 'landing-page-contenido',
+    loadChildren: () => import('./paginas/contenido/landing-page-contenido/landing-page-contenido.module').then( m => m.LandingPageContenidoPageModule)
+  },
+  {
     path: '',
     redirectTo: 'landing-page-autentificacion',
     pathMatch: 'full'
