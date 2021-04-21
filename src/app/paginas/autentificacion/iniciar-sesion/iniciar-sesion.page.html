@@ -1,7 +1,7 @@
 <ion-header class="header">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button color="primary"></ion-back-button>
+      <ion-back-button color="primary" defaultHref="/landing-page-autentificacion"></ion-back-button>
     </ion-buttons>
     <ion-title color="primary"> Iniciar Sesion </ion-title>
   </ion-toolbar>
@@ -24,13 +24,17 @@
     </ion-item>
     <div id="passwordErrorMessage" *ngIf="logForm.controls['logPassword'].invalid && (logForm.controls['logPassword'].dirty || logForm.controls['logPassword'].touched)">
       <span class="error ion-padding" *ngIf="logForm.controls['logPassword'].errors.required"> Contraseña obligatoria </span>
-      <span class="error ion-padding" *ngIf="logForm.controls['logPassword'].errors.maxLength"> Debe tener 8 caracteres </span>
+      <span class="error ion-padding" *ngIf="logForm.controls['logPassword'].errors.maxLength"> Debe tener maximo 15 caracteres </span>
+      <span class="error ion-padding" *ngIf="logForm.controls['logPassword'].errors.minLength"> Debe tener mninimo 8 caracteres </span>
     </div>
-
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" color="primary" shape="round" type="submit" (click)="submitLogForm()"> Iniciar Sesion </ion-button>
-      </ion-col>
-    </ion-row>
+    <ion-grid class="log-buttons-grid">
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="submitLogForm()"> Iniciar Sesion </ion-button>
+          <span class="divider line one-line"> Si olvidaste tu contraseña</span>
+          <ion-button expand="block" fill="solid" shape="round" [routerLink]="[ '/forgot-password']"> Recuperar mi contraseña </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
 </ion-content>

@@ -19,8 +19,8 @@ export class RegistroPage implements OnInit {
       regName: ['', [Validators.required]],
       regLastName: ['', [Validators.required]],
       regEmail: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      regPassword: ['', [Validators.required, Validators.maxLength(15)]],
-      regRePassword: ['', [Validators.required, Validators.maxLength(15)]],
+      regPassword: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(8)]],
+      regRePassword: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(8)]],
       regTypeUser: ['', [Validators.required]]
     });
   }

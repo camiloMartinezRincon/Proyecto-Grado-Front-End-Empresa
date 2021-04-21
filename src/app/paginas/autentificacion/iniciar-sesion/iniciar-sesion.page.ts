@@ -18,7 +18,7 @@ export class IniciarSesionPage implements OnInit {
   ngOnInit() {
     this.logForm = this.formBuilder.group({
       logEmail: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      logPassword: ['', [Validators.required, Validators.maxLength(15)]]
+      logPassword: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(8)]]
     });
   }
 
@@ -32,7 +32,7 @@ export class IniciarSesionPage implements OnInit {
       await logInAlert.present();
       return false;
     } else {
-      this.logRouter.navigate(['/landing-page-contenido']);
+      this.logRouter.navigate(['/proyectos']);
       console.log(this.logForm.value);
       console.log("Esta bien")
     }    

@@ -1,7 +1,7 @@
 <ion-header class="header">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button color="primary"></ion-back-button>
+      <ion-back-button color="primary" defaultHref="/landing-page-autentificacion"></ion-back-button>
     </ion-buttons>
     <ion-title color="primary"> Registrarse </ion-title>
   </ion-toolbar>
@@ -51,7 +51,8 @@
     </ion-item>
     <div id="passwordErrorMessage" *ngIf="registerForm.controls['regPassword'].invalid && (registerForm.controls['regPassword'].dirty || registerForm.controls['regPassword'].touched)">
       <span class="error ion-padding" *ngIf="registerForm.controls['regPassword'].errors.required"> Contraseña obligatoria </span>
-      <span class="error ion-padding" *ngIf="registerForm.controls['regPassword'].errors.maxLength"> Debe tener 8 caracteres </span>
+      <span class="error ion-padding" *ngIf="registerForm.controls['regPassword'].errors.maxLength"> Debe tener maximo 15 caracteres </span>
+      <span class="error ion-padding" *ngIf="registerForm.controls['regPassword'].errors.minLength"> Debe tener minimo 8 caracteres </span>
     </div>
 
     <ion-item>
@@ -60,13 +61,17 @@
     </ion-item>
     <div id="confirmPasswordErrorMessage" *ngIf="registerForm.controls['regRePassword'].invalid && (registerForm.controls['regRePassword'].dirty || registerForm.controls['regRePassword'].touched)">
       <span class="error ion-padding" *ngIf="registerForm.controls['regRePassword'].errors.required"> Confirmar la contraseña es obligatorio </span>
-      <span class="error ion-padding" *ngIf="registerForm.controls['regRePassword'].errors.maxLength"> Debe tener 8 caracteres </span>
+      <span class="error ion-padding" *ngIf="registerForm.controls['regRePassword'].errors.maxLength"> Debe tener maximo 15 caracteres </span>
+      <span class="error ion-padding" *ngIf="registerForm.controls['regRePassword'].errors.minLength"> Debe tener minimo 8 caracteres </span>
     </div>
-
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" color="primary" shape="round" type="submit" (click)="submitRegisterForm()"> Registrarse </ion-button>
-      </ion-col>
-    </ion-row>
+    <ion-grid class="reg-buttons-grid">
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="submitRegisterForm()"> Registrarse </ion-button>
+          <span class="divider line one-line"> Si ya tienes una cuenta </span>
+          <ion-button expand="block" fill="solid" shape="round" [routerLink]="[ '/iniciar-sesion']"> Iniciar sesion </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
 </ion-content>
