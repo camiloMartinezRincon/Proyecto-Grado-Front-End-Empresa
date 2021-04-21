@@ -19,10 +19,15 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/autentificacion/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
   {
+    path: 'proyectos',
+    loadChildren: () => import('./paginas/contenido/proyectos/proyectos.module').then( m => m.ProyectosPageModule)
+  },
+  {
     path: '',
     redirectTo: 'landing-page-autentificacion',
     pathMatch: 'full'
   }
+
 ];
 
 @NgModule({

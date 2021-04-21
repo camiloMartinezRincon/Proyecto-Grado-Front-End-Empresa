@@ -1,0 +1,42 @@
+ion-content {
+  --background: #ffffff;
+  --color: #797979;
+}
+.header {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-size: medium;
+  font-weight: normal;
+}
+.error {
+  color: #C50505;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: normal;
+}
+.divider {
+  display: flex;
+  
+  &:before,
+  &:after {
+    content: "";
+    flex: 1;
+  }
+}
+.line {
+  align-items: center;
+  margin: 1em -1em;
+  
+  &:before,
+  &:after {
+    height: 1px;
+    margin: 0 1em;
+  }
+}
+.one-line {
+  &:before,
+  &:after {
+    background:#bab5b5;
+  }
+}
