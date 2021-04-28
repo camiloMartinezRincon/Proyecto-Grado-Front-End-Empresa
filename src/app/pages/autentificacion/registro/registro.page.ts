@@ -28,6 +28,7 @@ export class RegistroPage implements OnInit {
     this.isSubmited = true;
     if (!this.registerForm.valid) {
       let logInAlert = await this.alertRegisterController.create({
+        backdropDismiss: false,
         header: 'Debes llenar todos los campos',
         buttons: ['Ok']
       });

@@ -1,14 +1,6 @@
 ion-content {
   --background: #ffffff;
   --color: #797979;
-}.aut-buttons {
-  margin: 10px auto;
-  height: 100%;
-  align-items: center;
-  align-content: center;
-  font-family: 'Lato', sans-serif;
-  justify-content: center;
-  text-align: center;
 }
 ion-grid {
   --ion-grid-padding: 5px;
@@ -25,6 +17,11 @@ ion-grid {
   --ion-grid-width-xl: 1140px;
 }.aut-buttons-grid {
   margin-top: 70%;
+  align-items: center;
+  align-content: center;
+  font-family: 'Lato', sans-serif;
+  justify-content: center;
+  text-align: center;
 }
 #is-user {
   font-style: normal;

@@ -1,11 +1,4 @@
-<ion-header class="header">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button color="primary" defaultHref="/landing-page-autentificacion"></ion-back-button>
-    </ion-buttons>
-    <ion-title color="primary"> Registrarse </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Registro"></app-header>
 
 <ion-content>
   <form [formGroup]="registerForm">
@@ -30,6 +23,7 @@
       <ion-select formControlName="regTypeUser" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Selecciona">
         <ion-select-option value="empleado">Empleado</ion-select-option>
         <ion-select-option value="cliente">Cliente</ion-select-option>
+        <ion-select-option value="cliente">Administrativo</ion-select-option>
       </ion-select>
     </ion-item>
     <div id="dropDownErrorMessage" *ngIf="registerForm.controls['regTypeUser'].invalid && (registerForm.controls['regTypeUser'].dirty || registerForm.controls['regTypeUser'].touched)">
@@ -64,7 +58,7 @@
       <span class="error ion-padding" *ngIf="registerForm.controls['regRePassword'].errors.maxLength"> Debe tener maximo 15 caracteres </span>
       <span class="error ion-padding" *ngIf="registerForm.controls['regRePassword'].errors.minLength"> Debe tener minimo 8 caracteres </span>
     </div>
-    <ion-grid class="reg-buttons-grid">
+    <ion-grid class="ion-padding">
       <ion-row>
         <ion-col>
           <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="submitRegisterForm()"> Registrarse </ion-button>

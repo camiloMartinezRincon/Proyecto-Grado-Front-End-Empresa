@@ -1,11 +1,4 @@
-<ion-header class="header">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button color="primary" defaultHref="/landing-page-autentificacion"></ion-back-button>
-    </ion-buttons>
-    <ion-title color="primary"> Iniciar Sesion </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Iniciar Sesion"></app-header>
 
 <ion-content>
   <form [formGroup]="logForm">
@@ -27,7 +20,7 @@
       <span class="error ion-padding" *ngIf="logForm.controls['logPassword'].errors.maxLength"> Debe tener maximo 15 caracteres </span>
       <span class="error ion-padding" *ngIf="logForm.controls['logPassword'].errors.minLength"> Debe tener mninimo 8 caracteres </span>
     </div>
-    <ion-grid class="log-buttons-grid">
+    <ion-grid class="ion-padding">
       <ion-row>
         <ion-col>
           <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="submitLogForm()"> Iniciar Sesion </ion-button>

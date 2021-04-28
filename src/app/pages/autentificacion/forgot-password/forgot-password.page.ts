@@ -26,6 +26,7 @@ export class ForgotPasswordPage implements OnInit {
     this.isSubmited = true;
     if (!this.forgPasswordForm.valid) {
       let forgPasswordAlert = await this.alertController.create({
+        backdropDismiss: false,
         header: 'Debes llenar todos los campos.',
         buttons: ['Ok']
       });
