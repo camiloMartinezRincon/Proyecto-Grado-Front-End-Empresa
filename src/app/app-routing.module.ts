@@ -23,10 +23,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/contenido/proyectos/proyectos.module').then( m => m.ProyectosPageModule)
   },
   {
+    path: 'new-project',
+    loadChildren: () => import('./pages/contenido/new-project/new-project.module').then( m => m.NewProjectPageModule)
+  },
+  {
     path: '',
     redirectTo: 'landing-page-autentificacion',
     pathMatch: 'full'
   }
+
+
 
 ];
 
