@@ -10,7 +10,8 @@ import { AlertController } from '@ionic/angular';
 export class NewProjectPage implements OnInit {
 
   newProjForm: FormGroup;
-  fecha = Date;
+  startDate = new Date();
+  endDate = new Date();
 
   constructor(private formBuilder: FormBuilder, private alertCtrl: AlertController) { }
 
@@ -19,9 +20,9 @@ export class NewProjectPage implements OnInit {
       projID: ['', [Validators.required, Validators.maxLength(4)]],
       clientName: ['', [Validators.required]],
       clientMail: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      txtAreaDescription: ['',[Validators.required]],
-      startDate: ['' ,[Validators.required]],
-      endDate: ['', [Validators.required]]
+      txtAreaDescription: ['', [Validators.required]],
+      startDate: [this.startDate.toISOString(), [Validators.required]],
+      endDate: [this.endDate.toISOString(), [Validators.required]]
     }); 
   }
 

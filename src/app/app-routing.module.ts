@@ -3,6 +3,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'landing-page-autentificacion',
+    pathMatch: 'full'
+  },
+  {
     path: 'landing-page-autentificacion',
     loadChildren: () => import('./pages/autentificacion/landing-page-autentificacion/landing-page-autentificacion.module').then( m => m.LandingPageAutentificacionPageModule)
   },
@@ -25,11 +30,6 @@ const routes: Routes = [
   {
     path: 'new-project',
     loadChildren: () => import('./pages/contenido/new-project/new-project.module').then( m => m.NewProjectPageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'landing-page-autentificacion',
-    pathMatch: 'full'
   }
 
 
