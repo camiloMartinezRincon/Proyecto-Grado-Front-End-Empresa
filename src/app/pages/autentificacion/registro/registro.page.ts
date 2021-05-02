@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -28,6 +28,7 @@ export class RegistroPage implements OnInit {
     this.isSubmited = true;
     if (!this.registerForm.valid) {
       let logInAlert = await this.alertRegisterController.create({
+        backdropDismiss: false,
         header: 'Debes llenar todos los campos',
         buttons: ['Ok']
       });

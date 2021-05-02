@@ -26,6 +26,7 @@ export class IniciarSesionPage implements OnInit {
     this.isSubmited = true;
     if (!this.logForm.valid) {
       let logInAlert = await this.alertLogInController.create({
+        backdropDismiss: false,
         header: 'Tu usuario o contraseña son incorrectos',
         buttons: ['Ok']
       });
