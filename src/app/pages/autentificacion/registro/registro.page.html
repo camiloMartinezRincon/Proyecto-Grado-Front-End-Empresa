@@ -1,6 +1,6 @@
 <app-header title="Registro"></app-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <form [formGroup]="registerForm">
     <ion-list>
       <ion-item>
@@ -63,7 +63,7 @@
     <ion-grid class="ion-padding">
       <ion-row>
         <ion-col>
-          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="submitRegisterForm()"> Registrarse </ion-button>
+          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="submitRegisterForm()" [disabled]="registerForm.invalid"> Registrarse </ion-button>
           <span class="divider line one-line"> Si ya tienes una cuenta </span>
           <ion-button expand="block" fill="solid" shape="round" [routerLink]="[ '/iniciar-sesion']"> Iniciar sesion </ion-button>
         </ion-col>

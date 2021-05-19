@@ -1,6 +1,6 @@
 <app-header title="Iniciar Sesion"></app-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <form [formGroup]="logForm">
     <ion-list>
       <ion-item>
@@ -25,7 +25,7 @@
     <ion-grid class="ion-padding">
       <ion-row>
         <ion-col>
-          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="submitLogForm()"> Iniciar Sesion </ion-button>
+          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="submitLogForm()" [disabled]="logForm.invalid"> Iniciar Sesion </ion-button>
           <span class="divider line one-line"> Si olvidaste tu contraseña</span>
           <ion-button expand="block" fill="solid" shape="round" [routerLink]="[ '/forgot-password']"> Recuperar mi contraseña </ion-button>
         </ion-col>

@@ -17,7 +17,8 @@ export class NewProjectPage implements OnInit {
 
   ngOnInit() {
     this.newProjForm = this.formBuilder.group({
-      projID: ['', [Validators.required, Validators.maxLength(4)]],
+      projID: ['', [Validators.required, Validators.maxLength(8)]],
+      projName: ['', [Validators.required]],
       clientName: ['', [Validators.required]],
       clientMail: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       txtAreaDescription: ['', [Validators.required]],
