@@ -3,13 +3,16 @@
 
 /** Ionic CSS Variables **/
 :root {
+  /** Global Font Family **/
+  --ion-font-family: 'Lato', sans-serif;
+
   /** primary **/
   --ion-color-primary: #580058;
-  --ion-color-primary-rgb: 60, 0, 60;
+  --ion-color-primary-rgb: 88,0,88;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3C003C;
-  --ion-color-primary-tint: #730973;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #4d004d;
+  --ion-color-primary-tint: #691a69;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -74,6 +77,14 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #770977;
   --ion-color-light-tint: #A829A8;
+
+  /** Add **/
+  --ion-color-add: #008800;
+  --ion-color-add-rgb: 0,136,0;
+  --ion-color-add-contrast: #ffffff;
+  --ion-color-add-contrast-rgb: 255,255,255;
+  --ion-color-add-shade: #007800;
+  --ion-color-add-tint: #1a941a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -233,4 +244,13 @@
 
     --ion-card-background: #1e1e1e;
   }
+}
+
+.ion-color-add {
+  --ion-color-base: var(--ion-color-add) !important;
+  --ion-color-base-rgb: var(--ion-color-add-rgb) !important;
+  --ion-color-contrast: var(--ion-color-add-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-add-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-add-shade) !important;
+  --ion-color-tint: var(--ion-color-add-tint) !important;
 }

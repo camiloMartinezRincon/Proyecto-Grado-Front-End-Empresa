@@ -1,8 +1,25 @@
 <app-header title="Nuevo Proyecto"></app-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <form [formGroup]="newProjForm">
     <ion-list>
+      <ion-item>
+        <ion-label position="floating" color="primary"> Nombre del Proyecto </ion-label>
+        <ion-input formControlName="projName" type="text" placeholder="Nombre del Proyecto" required></ion-input>
+      </ion-item>
+      <div id="projectNameErrorMessage" *ngIf="newProjForm.controls['projName'].invalid && (newProjForm.controls['projName'].dirty || newProjForm.controls['projName'].touched)">
+        <span class="error ion-padding" *ngIf="newProjForm.controls['projName'].errors.required"> Nombre del proyecto obligatorio </span>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary"> ID del Proyecto </ion-label>
+        <ion-input formControlName="projID" type="text" placeholder="ID del Proyecto" required></ion-input>
+      </ion-item>
+      <div id="idErrorMessage" *ngIf="newProjForm.controls['projID'].invalid && (newProjForm.controls['projID'].dirty || newProjForm.controls['projID'].touched)">
+        <span class="error ion-padding" *ngIf="newProjForm.controls['projID'].errors.required"> ID obligatorio </span>
+        <span class="error ion-padding" *ngIf="newProjForm.controls['projID'].errors.maxLength"> Debe tener 8 caracteres </span>
+      </div>
+
       <ion-item>
         <ion-label position="floating" color="primary"> Nombre del Cliente </ion-label>
         <ion-input formControlName="clientName" type="text" placeholder="Nombre del Cliente" required></ion-input>
@@ -19,14 +36,21 @@
         <span class="error ion-padding" *ngIf="newProjForm.controls['clientMail'].errors.required"> Correo del cliente obligatorio </span>
         <span class="error ion-padding" *ngIf="newProjForm.controls['clientMail'].errors.pattern"> Formato incorrecto </span>
       </div>
+
+      <ion-item>
+        <ion-label color="primary"> Fecha de inicio del proyecto </ion-label>
+        <ion-datetime formControlName="startDate" displayFormat="DD MMM, YYYY" requiered></ion-datetime>
+      </ion-item>
+      <div id="startDateErrorMessage" *ngIf="newProjForm.controls['startDate'].invalid && (newProjForm.controls['startDate'].dirty || newProjForm.controls['startDate'].touched)">
+        <span class="error ion-padding" *ngIf="newProjForm.controls['startDate'].errors.required"> La fecha es obligatoria </span>
+      </div>
   
       <ion-item>
-        <ion-label position="floating" color="primary"> ID del Proyecto </ion-label>
-        <ion-input formControlName="projID" type="text" placeholder="ID del Proyecto" required></ion-input>
+        <ion-label color="primary"> Fecha estimada de entrega </ion-label>
+        <ion-datetime formControlName="endDate" displayFormat="DD  MMM, YYYY" requiered></ion-datetime>
       </ion-item>
-      <div id="idErrorMessage" *ngIf="newProjForm.controls['projID'].invalid && (newProjForm.controls['projID'].dirty || newProjForm.controls['projID'].touched)">
-        <span class="error ion-padding" *ngIf="newProjForm.controls['projID'].errors.required"> ID obligatorio </span>
-        <span class="error ion-padding" *ngIf="newProjForm.controls['projID'].errors.maxLength"> Debe tener 4 caracteres </span>
+      <div id="endDateErrorMessage" *ngIf="newProjForm.controls['endDate'].invalid && (newProjForm.controls['endDate'].dirty || newProjForm.controls['endDate'].touched)">
+        <span class="error ion-padding" *ngIf="newProjForm.controls['endDate'].errors.required"> La fecha es obligatoria </span>
       </div>
   
       <ion-item>
@@ -36,27 +60,11 @@
       <div id="descriptionErrorMessage" *ngIf="newProjForm.controls['txtAreaDescription'].invalid && (newProjForm.controls['txtAreaDescription'].dirty || newProjForm.controls['txtAreaDescription'].touched)">
         <span class="error ion-padding" *ngIf="newProjForm.controls['txtAreaDescription'].errors.required"> La descripcion es obligatoria </span>
       </div>
-  
-      <ion-item>
-        <ion-label color="primary"> Fecha de inicio del proyecto </ion-label>
-        <ion-datetime formControlName="startDate" displayFormat="MMM DD, YYYY" requiered></ion-datetime>
-      </ion-item>
-      <div id="startDateErrorMessage" *ngIf="newProjForm.controls['startDate'].invalid && (newProjForm.controls['startDate'].dirty || newProjForm.controls['startDate'].touched)">
-        <span class="error ion-padding" *ngIf="newProjForm.controls['startDate'].errors.required"> La fecha es obligatoria </span>
-      </div>
-  
-      <ion-item>
-        <ion-label color="primary"> Fecha estimada de entrega </ion-label>
-        <ion-datetime formControlName="endDate" displayFormat="MMM DD, YYYY" requiered></ion-datetime>
-      </ion-item>
-      <div id="endDateErrorMessage" *ngIf="newProjForm.controls['endDate'].invalid && (newProjForm.controls['endDate'].dirty || newProjForm.controls['endDate'].touched)">
-        <span class="error ion-padding" *ngIf="newProjForm.controls['endDate'].errors.required"> La fecha es obligatoria </span>
-      </div>
     </ion-list>
     <ion-grid class="ion-padding">
       <ion-row>
         <ion-col>
-          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="crearNuevoProyecto()"> Crear </ion-button>
+          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="crearNuevoProyecto()" [disabled]="newProjForm.invalid"> Crear </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
