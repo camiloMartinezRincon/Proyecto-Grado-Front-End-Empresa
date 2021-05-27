@@ -25,11 +25,27 @@ const routes: Routes = [
   },
   {
     path: 'proyectos',
-    loadChildren: () => import('./pages/contenido/proyectos/proyectos.module').then( m => m.ProyectosPageModule)
+    loadChildren: () => import('./pages/contenido/mis-proyectos/proyectos.module').then( m => m.ProyectosPageModule)
   },
   {
     path: 'new-project',
     loadChildren: () => import('./pages/contenido/new-project/new-project.module').then( m => m.NewProjectPageModule)
+  },
+  {
+    path: 'nuevo-requerimiento',
+    loadChildren: () => import('./pages/contenido/nuevo-requerimiento/nuevo-requerimiento.module').then( m => m.NuevoRequerimientoPageModule)
+  },
+  {
+    path: 'mis-requerimientos',
+    loadChildren: () => import('./pages/contenido/mis-requerimientos/mis-requerimientos.module').then( m => m.MisRequerimientosPageModule)
+  },
+  {
+    path: 'nueva-entrega',
+    loadChildren: () => import('./pages/contenido/nueva-entrega/nueva-entrega.module').then( m => m.NuevaEntregaPageModule)
+  },
+  {
+    path: 'mis-entregas',
+    loadChildren: () => import('./pages/contenido/mis-entregas/mis-entregas.module').then( m => m.MisEntregasPageModule)
   }
 ];
 

@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "bag-add-outline",
+    "name": "Nuevo Proyecto",
+    "redirectTo": "/new-project"
+  },
+  {
+    "icon": "briefcase-outline",
+    "name": "Mis Proyectos",
+    "redirectTo": "/proyectos"
+  },  
+  {
+    "icon": "document-outline",
+    "name": "Nuevo Requerimiento",
+    "redirectTo": "/nuevo-requerimiento"
+  },
+  {
+    "icon": "documents-outline",
+    "name": "Requerimientos",
+    "redirectTo": "/mis-requerimientos"
+  },
+  {
+    "icon": "calendar-outline",
+    "name": "Programar Nueva Entrega",
+    "redirectTo": "/nueva-entrega"
+  },
+  {
+    "icon": "calendar-number-outline",
+    "name": "Mis Entregas Programadas",
+    "redirectTo": "/mis-entregas"
+  }
+]

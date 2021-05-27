@@ -3,15 +3,21 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 import { HeaderComponent } from './header/header.component';
+import { HeaderMenuComponent } from './header-menu/header-menu.component';
+import { HeaderMenuFilterComponent } from './header-menu-filter/header-menu-filter.component';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    HeaderMenuComponent,
+    HeaderMenuFilterComponent
   ],
   exports: [
-    HeaderComponent   
+    HeaderComponent,
+    HeaderMenuComponent,
+    HeaderMenuFilterComponent   
   ],
   imports: [
     CommonModule,

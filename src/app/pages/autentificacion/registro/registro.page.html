@@ -20,23 +20,11 @@
       </div>
   
       <ion-item>
-        <ion-label color="primary"> Dependencia </ion-label>
-        <ion-select formControlName="regTypeUser" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Selecciona">
-          <ion-select-option value="empleado">Empleado</ion-select-option>
-          <ion-select-option value="cliente">Cliente</ion-select-option>
-          <ion-select-option value="admin">Administrativo</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <div id="dropDownErrorMessage" *ngIf="registerForm.controls['regTypeUser'].invalid && (registerForm.controls['regTypeUser'].dirty || registerForm.controls['regTypeUser'].touched)">
-        <span class="error ion-padding" *ngIf="registerForm.controls['regTypeUser'].errors.required"> Escoge una opción </span>
-      </div>
-  
-      <ion-item>
-        <ion-label position="floating" color="primary"> Correo Electronico </ion-label>
-        <ion-input formControlName="regEmail" type="email" placeholder="Correo Electronico" required></ion-input>
+        <ion-label position="floating" color="primary"> Correo Corporativo </ion-label>
+        <ion-input formControlName="regEmail" type="email" placeholder="Correo Corporativo" required></ion-input>
       </ion-item>
       <div id="emailErrorMessage" *ngIf="registerForm.controls['regEmail'].invalid && (registerForm.controls['regEmail'].dirty || registerForm.controls['regEmail'].touched)">
-        <span class="error ion-padding" *ngIf="registerForm.controls['regEmail'].errors.required"> Correo electronico obligatorio </span>
+        <span class="error ion-padding" *ngIf="registerForm.controls['regEmail'].errors.required"> Correo corporativo obligatorio </span>
         <span class="error ion-padding" *ngIf="registerForm.controls['regEmail'].errors.pattern"> Formato incorrecto </span>
       </div>
   

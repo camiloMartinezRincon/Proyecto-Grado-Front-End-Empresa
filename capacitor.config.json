@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "front-end",
+  "appName": "front-end-empresa",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

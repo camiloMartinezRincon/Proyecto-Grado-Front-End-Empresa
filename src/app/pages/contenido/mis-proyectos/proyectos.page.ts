@@ -12,24 +12,18 @@ import { RestServicesService } from 'src/app/services/rest-services.service';
 })
 export class ProyectosPage implements OnInit {
   projects: Observable <any>;
-  filteredData: Observable <any>;
 
-  constructor( private restService: RestServicesService, private navCtrl: NavController ) {
-    //this.filteredData = this.restService.getProjects();
-  }
+  constructor( private restService: RestServicesService, private navCtrl: NavController ) { }
 
   ngOnInit() {
     this.projects = this.restService.getProjects();
   }
 
-  btnDelete() {
-    console.log("Delete!!!");
+  btnDelete(project: any) {
+    console.log('Delete', project.project_name);
   }
 
   dataFilter() {
-    /*this.filteredData = this.filteredData.filter((project) => {
-       return true;
-     });*/
     console.log("filtroooo");
   }
 }
