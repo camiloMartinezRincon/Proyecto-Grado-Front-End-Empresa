@@ -1,0 +1,37 @@
+<app-header-menu-filter title="Requerimientos"></app-header-menu-filter>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button [routerLink]="['/nuevo-requerimiento']" data-desc="Nuevo Requerimiento" color="add">
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
+
+<ion-content class="ion-padding">
+  <ion-card *ngFor="let req of requerimientos |  async">
+    <ion-card-header>
+      <ion-card-subtitle class="id-req"> {{ req.project_id }}/{{ req.requerimiento_id }} </ion-card-subtitle>
+      <ion-card-title class="titulo-card" color="primary"> {{ req.tipo_requerimiento }} </ion-card-title>
+      <ion-card-subtitle> Proyecto: {{ req.proyecto }} </ion-card-subtitle>
+      <ion-card-subtitle> Tipo de Requerimiento: {{ req.tipo_requerimiento }} </ion-card-subtitle>
+      <ion-card-subtitle> Prioridad: {{ req.prioridad }} </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle class="subtitulo" color="primary"> Resumen </ion-card-subtitle>
+      {{ req.resumen_requerimiento }}
+      <br>
+      <br>
+      <ion-card-subtitle class="subtitulo" color="primary"> Descripción </ion-card-subtitle> 
+      {{ req.descripcion_requerimiento }} 
+    </ion-card-content>
+
+    <ion-button (click)="btnDelete(req)" expand="block" color="danger" fill="clear">
+      Borrar
+      <ion-icon slot="start" name="trash-outline"></ion-icon>
+    </ion-button>
+  </ion-card>
+</ion-content>
