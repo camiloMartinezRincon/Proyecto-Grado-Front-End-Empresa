@@ -16,4 +16,8 @@ export class MisEntregasPage implements OnInit {
     this.entregas = this.restService.getProgEntregas();
   }
 
+  btnDelete(entrega: any) {
+    console.log('Delete', entrega);
+  }
+
 }
