@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { MenuComponents } from '../interfaces/interfaces';
+import { Entregas } from '../models/entregas.model';
+import { MenuComponents } from '../models/menu.model';
+import { Proyectos } from '../models/proyectos.model';
+import { Requerimientos } from '../models/requerimientos.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +14,19 @@ export class RestServicesService {
   constructor(  private http: HttpClient) { }
 
   getProjects() {
-    return this.http.get('http://localhost:3000/projects');
-  }
-
-  getCotizaciones() {
-    return this.http.get('http://localhost:3000/cotizaciones')
+    return this.http.get<Proyectos[]>('http://localhost:3000/projects');
   }
 
   getProgEntregas() {
-    return this.http.get('http://localhost:3000/entregas');
+    return this.http.get<Entregas[]>('http://localhost:3000/entregas');
   }
 
   getRequerimientos() {
-    return this.http.get('http://localhost:3000/requerimientos');
+    return this.http.get<Requerimientos[]>('http://localhost:3000/requerimientos');
+  }
+
+  getUsuarios() {
+    return this.http.get('http://localhost:3000/usuarios')
   }
 
   getMenuOpts() {

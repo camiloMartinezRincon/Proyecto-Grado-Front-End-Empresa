@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Proyectos } from 'src/app/models/proyectos.model';
 
 import { RestServicesService } from 'src/app/services/rest-services.service';
 
@@ -11,19 +9,21 @@ import { RestServicesService } from 'src/app/services/rest-services.service';
   styleUrls: ['./proyectos.page.scss'],
 })
 export class ProyectosPage implements OnInit {
-  projects: Observable <any>;
+  projects: Proyectos[] = [];
+  filtrarProyectos = '';
 
-  constructor( private restService: RestServicesService, private navCtrl: NavController ) { }
+  constructor( private restService: RestServicesService ) { }
 
   ngOnInit() {
-    this.projects = this.restService.getProjects();
+    this.restService.getProjects().subscribe( resp => this.projects = resp);
   }
 
   btnDelete(project: any) {
     console.log('Delete', project.project_name);
   }
 
-  dataFilter() {
-    console.log("filtroooo");
+  onSearchChange( event ) {
+    const texto = event.target.value;
+    this.filtrarProyectos = texto;
   }
 }

@@ -4,20 +4,17 @@ import { IonicModule } from '@ionic/angular';
 
 import { HeaderComponent } from './header/header.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
-import { HeaderMenuFilterComponent } from './header-menu-filter/header-menu-filter.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    HeaderMenuComponent,
-    HeaderMenuFilterComponent
+    HeaderMenuComponent
   ],
   exports: [
     HeaderComponent,
-    HeaderMenuComponent,
-    HeaderMenuFilterComponent   
+    HeaderMenuComponent 
   ],
   imports: [
     CommonModule,
