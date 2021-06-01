@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { MisRequerimientosPageRoutingModule } from './mis-requerimientos-routing.module';
 import { MisRequerimientosPage } from './mis-requerimientos.page';
-import { ComponentsModule } from 'src/app/components/components.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -13,7 +13,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     MisRequerimientosPageRoutingModule,
-    ComponentsModule
+    PipesModule
   ],
   declarations: [MisRequerimientosPage]
 })

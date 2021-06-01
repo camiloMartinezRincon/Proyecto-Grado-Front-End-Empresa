@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+
+import { Requerimientos } from 'src/app/models/requerimientos.model';
 import { RestServicesService } from 'src/app/services/rest-services.service';
 
 @Component({
@@ -8,16 +9,22 @@ import { RestServicesService } from 'src/app/services/rest-services.service';
   styleUrls: ['./mis-requerimientos.page.scss'],
 })
 export class MisRequerimientosPage implements OnInit {
-  requerimientos: Observable<any>;
+  requerimientos: Requerimientos[] = [];
+  filtrarRequerimientos = '';
 
   constructor( private restService: RestServicesService ) { }
 
   ngOnInit() {
-    this.requerimientos = this.restService.getRequerimientos();
+    this.restService.getRequerimientos().subscribe( resp => this.requerimientos = resp );
   }
 
   btnDelete(requerimiento: any) {
     console.log('borrarr', requerimiento);
+  }
+
+  onSearchChange( event ) {
+    const texto = event.target.value;
+    this.filtrarRequerimientos = texto;
   }
 
 }

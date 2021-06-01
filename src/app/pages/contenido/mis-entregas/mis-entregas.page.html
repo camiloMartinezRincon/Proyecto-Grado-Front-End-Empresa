@@ -1,4 +1,17 @@
-<app-header-menu-filter title="Mis Entregas Programadas"></app-header-menu-filter>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first">
+        <ion-icon name="grid"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title> Mis Entregas Programadas </ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="primary">
+    <ion-searchbar placeholder="Nombre del Proyecto" (ionChange)="onSearchChange($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button>
@@ -12,18 +25,22 @@
 </ion-fab>
 
 <ion-content class="ion-padding">
-  <ion-card *ngFor="let entrega of entregas |  async">
-    <ion-card-header>
-      <ion-card-title class="titulo-card" color="primary"> {{ entrega.nombre_apellido}} </ion-card-title>
-      <ion-card-subtitle> {{ entrega.correo_electronico }} </ion-card-subtitle>
-      <ion-card-subtitle> Nombre del proyecto: {{ entrega.nombre_proyecto }} </ion-card-subtitle>
-      <ion-card-subtitle> Fecha de entrega: {{ entrega.fecha_entrega }} </ion-card-subtitle>
-      <ion-card-subtitle> Hora de entrega: {{ entrega.hora_entrega }} </ion-card-subtitle>
-      <ion-card-subtitle> Lugar de la entrega: {{ entrega.lugar_entrega }} </ion-card-subtitle>
-    </ion-card-header>
-    <ion-button (click)="btnDelete(entrega)" expand="block" color="danger" fill="clear">
-      Borrar
-      <ion-icon slot="start" name="trash-outline"></ion-icon>
-    </ion-button>
-  </ion-card>
+  <ion-list>
+    <ion-item *ngFor="let entrega of entregas |  filtroEntregas:filtrarEntregas">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="titulo-card" color="primary"> {{ entrega.nombre_apellido}} </ion-card-title>
+          <ion-card-subtitle> {{ entrega.correo_electronico }} </ion-card-subtitle>
+          <ion-card-subtitle> Nombre del proyecto: {{ entrega.nombre_proyecto }} </ion-card-subtitle>
+          <ion-card-subtitle> Fecha de entrega: {{ entrega.fecha_entrega }} </ion-card-subtitle>
+          <ion-card-subtitle> Hora de entrega: {{ entrega.hora_entrega }} </ion-card-subtitle>
+          <ion-card-subtitle> Lugar de la entrega: {{ entrega.lugar_entrega }} </ion-card-subtitle>
+        </ion-card-header>
+        <ion-button (click)="btnDelete(entrega)" expand="block" color="danger" fill="clear">
+          Borrar
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>

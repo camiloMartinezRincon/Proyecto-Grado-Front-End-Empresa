@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { MenuComponents } from './interfaces/interfaces';
+import { MenuComponents } from './models/menu.model';
 import { RestServicesService } from './services/rest-services.service';
 
 @Component({
@@ -11,11 +11,11 @@ import { RestServicesService } from './services/rest-services.service';
 })
 export class AppComponent implements OnInit {
 
-  menuOpts: Observable<MenuComponents[]>;
+  menuOpts: MenuComponents[] = [];
 
   constructor(private restService: RestServicesService) { }
 
   ngOnInit() { 
-    this.menuOpts = this.restService.getMenuOpts();
+    this.restService.getMenuOpts().subscribe(resp => this.menuOpts = resp);
   }
 }
