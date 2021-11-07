@@ -14,6 +14,5 @@ export class ProfilePage implements OnInit {
   constructor( private restService: RestServicesService ) { }
 
   ngOnInit() {
-    this.usuarios = this.restService.getUsuarios();
   }
 }

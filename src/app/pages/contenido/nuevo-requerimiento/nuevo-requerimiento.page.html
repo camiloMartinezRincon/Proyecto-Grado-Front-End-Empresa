@@ -4,22 +4,12 @@
   <form [formGroup]="nuevoRequerimientoForm">
     <ion-list>
       <ion-item>
-        <ion-label color="primary"> ID del Proyecto </ion-label>
-        <ion-select formControlName="idProyecto" ok-text="Okay" cancel-text="Cancelar" placeholder="Selecionar" required>
-          <ion-select-option *ngFor="let project of proyectos | async"> {{ project.project_id }} </ion-select-option>
-        </ion-select>
+        <ion-label position="floating" color="primary"> Código del Requerimiento </ion-label>
+        <ion-input formControlName="requerimientoCode" type="text" placeholder="Código del Requerimiento" required></ion-input>
       </ion-item>
-      <div id="idProyectoErrorMessage" *ngIf="nuevoRequerimientoForm.controls['idProyecto'].invalid && (nuevoRequerimientoForm.controls['idProyecto'].dirty || nuevoRequerimientoForm.controls['idProyecto'].touched)">
-        <span class="error ion-padding" *ngIf="nuevoRequerimientoForm.controls['idProyecto'].errors.required"> El ID del proyecto es obligatorio </span>
-      </div>
-
-      <ion-item>
-        <ion-label position="floating" color="primary"> ID del Requerimiento </ion-label>
-        <ion-input formControlName="requerimientoID" type="text" placeholder="ID del Requerimiento" required></ion-input>
-      </ion-item>
-      <div id="idRequerimientoErrorMessage" *ngIf="nuevoRequerimientoForm.controls['requerimientoID'].invalid && (nuevoRequerimientoForm.controls['requerimientoID'].dirty || nuevoRequerimientoForm.controls['requerimientoID'].touched)">
-        <span class="error ion-padding" *ngIf="nuevoRequerimientoForm.controls['requerimientoID'].errors.required"> ID obligatorio </span>
-        <span class="error ion-padding" *ngIf="nuevoRequerimientoForm.controls['requerimientoID'].errors.maxLength"> Debe tener 8 caracteres </span>
+      <div id="idRequerimientoErrorMessage" *ngIf="nuevoRequerimientoForm.controls['requerimientoCode'].invalid && (nuevoRequerimientoForm.controls['requerimientoCode'].dirty || nuevoRequerimientoForm.controls['requerimientoCode'].touched)">
+        <span class="error ion-padding" *ngIf="nuevoRequerimientoForm.controls['requerimientoCode'].errors.required"> Código obligatorio </span>
+        <span class="error ion-padding" *ngIf="nuevoRequerimientoForm.controls['requerimientoCode'].errors.maxLength"> Debe tener 8 caracteres </span>
       </div>
 
       <ion-item>
@@ -35,7 +25,7 @@
       <ion-item>
         <ion-label color="primary"> Proyecto </ion-label>
         <ion-select formControlName="proyecto" ok-text="Okay" cancel-text="Cancelar" placeholder="Selecionar" required>
-          <ion-select-option *ngFor="let project of proyectos | async"> {{ project.project_name }} </ion-select-option>
+          <ion-select-option *ngFor="let project of projects | async"> {{ project.name }} </ion-select-option>
         </ion-select>
       </ion-item>
       <div id="proyectoErrorMessage" *ngIf="nuevoRequerimientoForm.controls['proyecto'].invalid && (nuevoRequerimientoForm.controls['proyecto'].dirty || nuevoRequerimientoForm.controls['proyecto'].touched)">
@@ -43,11 +33,11 @@
       </div>
 
       <ion-item>
-        <ion-label position="floating" color="primary"> Resumen </ion-label>
-        <ion-input formControlName="ResumenRequerimiento" type="text" placeholder="Resumen del requerimiento" required></ion-input>
+        <ion-label position="floating" color="primary"> Titulo del requerimiento </ion-label>
+        <ion-input formControlName="ResumenRequerimiento" type="text" placeholder="Titulo del requerimiento" required></ion-input>
       </ion-item>
       <div id="resumenRequerimientoErrorMessage" *ngIf="nuevoRequerimientoForm.controls['ResumenRequerimiento'].invalid && (nuevoRequerimientoForm.controls['ResumenRequerimiento'].dirty || nuevoRequerimientoForm.controls['ResumenRequerimiento'].touched)">
-        <span class="error ion-padding" *ngIf="nuevoRequerimientoForm.controls['ResumenRequerimiento'].errors.required"> Resumen obligatorio </span>
+        <span class="error ion-padding" *ngIf="nuevoRequerimientoForm.controls['ResumenRequerimiento'].errors.required"> El titulo es obligatorio </span>
       </div>
 
       <ion-item>

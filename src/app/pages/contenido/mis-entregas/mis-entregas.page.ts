@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Entregas } from 'src/app/models/entregas.model';
+import { ProjectDelivery } from 'src/app/models/project-delivery';
 import { RestServicesService } from 'src/app/services/rest-services.service';
 
 @Component({
@@ -9,14 +9,12 @@ import { RestServicesService } from 'src/app/services/rest-services.service';
   styleUrls: ['./mis-entregas.page.scss'],
 })
 export class MisEntregasPage implements OnInit {
-  entregas: Entregas[] = [];
+  entregas: ProjectDelivery[] = [];
   filtrarEntregas = '';
 
   constructor(private restService: RestServicesService) { }
 
-  ngOnInit() {
-    this.restService.getProgEntregas().subscribe(resp => this.entregas = resp);
-  }
+  ngOnInit() {}
 
   btnDelete(entrega: any) {
     console.log('Delete', entrega);

@@ -29,12 +29,12 @@
     <ion-item *ngFor="let entrega of entregas |  filtroEntregas:filtrarEntregas">
       <ion-card>
         <ion-card-header>
-          <ion-card-title class="titulo-card" color="primary"> {{ entrega.nombre_apellido}} </ion-card-title>
-          <ion-card-subtitle> {{ entrega.correo_electronico }} </ion-card-subtitle>
-          <ion-card-subtitle> Nombre del proyecto: {{ entrega.nombre_proyecto }} </ion-card-subtitle>
-          <ion-card-subtitle> Fecha de entrega: {{ entrega.fecha_entrega }} </ion-card-subtitle>
-          <ion-card-subtitle> Hora de entrega: {{ entrega.hora_entrega }} </ion-card-subtitle>
-          <ion-card-subtitle> Lugar de la entrega: {{ entrega.lugar_entrega }} </ion-card-subtitle>
+          <ion-card-title class="titulo-card" color="primary"> {{ entrega.clientFullName}} </ion-card-title>
+          <ion-card-subtitle> {{ entrega.clientEmail }} </ion-card-subtitle>
+          <ion-card-subtitle> Nombre del proyecto: {{ entrega.projectName }} </ion-card-subtitle>
+          <ion-card-subtitle> Fecha de entrega: {{ entrega.deliveryDate }} </ion-card-subtitle>
+          <ion-card-subtitle> Hora de entrega: {{ entrega.deliveryHour }} </ion-card-subtitle>
+          <ion-card-subtitle> Lugar de la entrega: {{ entrega.deliveryPlace }} </ion-card-subtitle>
         </ion-card-header>
         <ion-button (click)="btnDelete(entrega)" expand="block" color="danger" fill="clear">
           Borrar

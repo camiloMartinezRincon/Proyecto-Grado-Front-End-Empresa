@@ -29,18 +29,18 @@
     <ion-item *ngFor="let project of projects |  filtroProyectos:filtrarProyectos">
       <ion-card>
         <ion-card-header>
-          <ion-card-title class="titulo-card" color="primary"> {{ project.project_name }} </ion-card-title>
+          <ion-card-title class="titulo-card" color="primary"> {{ project.projectName }} </ion-card-title>
           <br>
-          <ion-card-subtitle> Nombre del Cliente: {{ project.client_name }} </ion-card-subtitle>
-          <ion-card-subtitle> Correo del Cliente: {{ project.client_email }} </ion-card-subtitle>
-          <ion-card-subtitle> ID del Proyecto: {{ project.project_id }} </ion-card-subtitle>
-          <ion-card-subtitle> Tipo de Servicio: {{ project.tipo_servicio }} </ion-card-subtitle>
-          <ion-card-subtitle> Fecha de inicio: {{ project.start_date }} </ion-card-subtitle>
-          <ion-card-subtitle> Fecha de entrega: {{ project.end_date }} </ion-card-subtitle>
+          <ion-card-subtitle> Nombre del Cliente: {{ project.clientName }} </ion-card-subtitle>
+          <ion-card-subtitle> Correo del Cliente: {{ project.clientEmail }} </ion-card-subtitle>
+          <ion-card-subtitle> Codigo del Proyecto: {{ project.projectCode }} </ion-card-subtitle>
+          <ion-card-subtitle> Tipo de Servicio: {{ project.serviceType }} </ion-card-subtitle>
+          <ion-card-subtitle> Fecha de inicio: {{ project.startDate }} </ion-card-subtitle>
+          <ion-card-subtitle> Fecha de entrega: {{ project.endDate }} </ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
           <ion-card-subtitle class="subtitulo" color="primary"> Descripción </ion-card-subtitle> 
-          {{ project.project_description }} 
+          {{ project.projectDescription }} 
         </ion-card-content>
     
         <ion-button (click)="btnDelete(project)" expand="block" color="danger" fill="clear">

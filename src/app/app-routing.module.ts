@@ -46,7 +46,8 @@ const routes: Routes = [
   {
     path: 'mis-entregas',
     loadChildren: () => import('./pages/contenido/mis-entregas/mis-entregas.module').then( m => m.MisEntregasPageModule)
-  },  {
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }

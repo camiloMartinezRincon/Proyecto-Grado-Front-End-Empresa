@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Requerimientos } from 'src/app/models/requerimientos.model';
+
+import { Requirement } from 'src/app/models/requirement';
 import { RestServicesService } from 'src/app/services/rest-services.service';
 
 @Component({
@@ -9,14 +10,12 @@ import { RestServicesService } from 'src/app/services/rest-services.service';
   styleUrls: ['./mis-requerimientos.page.scss'],
 })
 export class MisRequerimientosPage implements OnInit {
-  requerimientos: Requerimientos[] = [];
+  requerimientos: Requirement[] = [];
   filtrarRequerimientos = '';
 
   constructor( private restService: RestServicesService ) { }
 
-  ngOnInit() {
-    this.restService.getRequerimientos().subscribe( resp => this.requerimientos = resp );
-  }
+  ngOnInit() {}
 
   btnDelete(requerimiento: any) {
     console.log('borrarr', requerimiento);

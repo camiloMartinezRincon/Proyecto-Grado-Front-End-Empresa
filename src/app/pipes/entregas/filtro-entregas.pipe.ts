@@ -1,13 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Entregas } from 'src/app/models/entregas.model';
+
+import { ProjectDelivery } from 'src/app/models/project-delivery';
 
 @Pipe({
   name: 'filtroEntregas'
 })
 export class FiltroEntregasPipe implements PipeTransform {
 
-  transform( entregas: Entregas[], texto: string): Entregas[] {
+  transform( entregas: ProjectDelivery[], texto: string): ProjectDelivery[] {
 
     if(texto.length === 0) {
       return entregas;
@@ -16,7 +17,7 @@ export class FiltroEntregasPipe implements PipeTransform {
     texto = texto.toLocaleLowerCase();
 
     return entregas.filter( entrega => {
-      return entrega.nombre_proyecto.toLocaleLowerCase().includes(texto);
+      return entrega.projectName.toLocaleLowerCase().includes(texto);
     });
 
   }
