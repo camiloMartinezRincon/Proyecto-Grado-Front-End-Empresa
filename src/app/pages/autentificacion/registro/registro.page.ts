@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-registro',
@@ -12,7 +13,7 @@ export class RegistroPage implements OnInit {
   registerForm: FormGroup;
   isSubmited = false;
 
-  constructor(private formBuilder: FormBuilder, private alertRegisterController: AlertController, private regRouter: Router) { }
+  constructor(private formBuilder: FormBuilder, private alertRegisterController: AlertController, private regRouter: Router, private loginService: ProjectService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -23,20 +24,21 @@ export class RegistroPage implements OnInit {
       regRePassword: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(8)]]
     });
   }
-  async submitRegisterForm() {
-    this.isSubmited = true;
-    if (!this.registerForm.valid) {
-      let logInAlert = await this.alertRegisterController.create({
-        backdropDismiss: false,
-        header: 'Debes llenar todos los campos',
-        buttons: ['Ok']
-      });
-      await logInAlert.present();
-      return false;
-    }else {
-      this.regRouter.navigate(['/iniciar-sesion'])
-      console.log(this.registerForm.value);
-    }
+   submitRegisterForm() {
+    let register = {
+      userName: this.registerForm.controls['regName'].value,
+      userLastname: this.registerForm.controls['regLastName'].value,
+      corpUserEmail: this.registerForm.controls['regEmail'].value,
+      userPassword: this.registerForm.controls['regPassword'].value,
+    };
+
+    this.loginService.newUser(register).subscribe((data: any) => {
+      if (data === "ACCEPTED") {
+        console.log('Procesado');
+      }else {
+        this.regRouter.navigate(['/login'])
+      }
+    });
   }
   confirmPassword() {
 

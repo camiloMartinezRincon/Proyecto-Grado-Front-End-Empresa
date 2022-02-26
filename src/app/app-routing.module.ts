@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LandingPageAutentificacionPage } from './pages/autentificacion/landing-page-autentificacion/landing-page-autentificacion.page';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'landing-page-autentificacion',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'landing-page-autentificacion',
-    loadChildren: () => import('./pages/autentificacion/landing-page-autentificacion/landing-page-autentificacion.module').then( m => m.LandingPageAutentificacionPageModule)
+    path: 'login',
+    component: LandingPageAutentificacionPage,
+    data:{title:'Inicio Sesión'}
   },
   {
     path: 'iniciar-sesion',

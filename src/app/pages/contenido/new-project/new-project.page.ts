@@ -14,9 +14,9 @@ export class NewProjectPage implements OnInit {
   newProjForm: FormGroup;
   project = new Project();
 
-  constructor(private formBuilder: FormBuilder, 
-              private alertCtrl: AlertController, 
-              private projectService: ProjectService, 
+  constructor(private formBuilder: FormBuilder,
+              private alertCtrl: AlertController,
+              private projectService: ProjectService,
               private router: Router) { }
 
   ngOnInit() {
@@ -29,20 +29,28 @@ export class NewProjectPage implements OnInit {
       txtAreaDescription: ['', [Validators.required]],
       startDate: ['', [Validators.required]],
       endDate: ['', [Validators.required]]
-    }); 
+    });
   }
 
   crearNuevoProyecto(newProjForm): void {
-    if (newProjForm.valid) {
-      this.projectService.createNewProject(this.project).subscribe( (resp: any) => {
-        this.project = resp;
+    let projectInfo = {
+      projectCode: this.newProjForm.controls['projCode'].value,
+      projectName: this.newProjForm.controls['projName'].value,
+      serviceType: this.newProjForm.controls['servicio'].value,
+      clientName: this.newProjForm.controls['clientName'].value,
+      clientEmail: this.newProjForm.controls['clientMail'].value,
+      projectDescription: this.newProjForm.controls['txtAreaDescription'].value,
+      startDate: this.newProjForm.controls['startDate'].value,
+      endDate: this.newProjForm.controls['endDate'].value,
+      //localStorage.setItem('userEmail', projectInfo.corpUserEmail);
+    };
+
+    this.projectService.createNewProject(projectInfo).subscribe((data: any) => {
+      if (data != null) {
+        console.log('Procesado');
         this.router.navigate(['/proyectos']);
-      },
-      (error) => {
-        console.log(error);
-      } 
-      );
-    }
+      }
+    });
   }
 
 }

@@ -26,7 +26,7 @@
 
 <ion-content class="ion-padding">
   <ion-list>
-    <ion-item *ngFor="let req of requerimientos |  filtroRequerimientos:filtrarRequerimientos">
+    <ion-item *ngFor="let req of this.requerimientos |  filtroRequerimientos:filtrarRequerimientos">
       <ion-card>
         <ion-card-header>
           <ion-card-subtitle class="id-req"> {{ req.project_id }}/{{ req.requerimiento_id }} </ion-card-subtitle>
@@ -40,10 +40,10 @@
           {{ req.resumen_requerimiento }}
           <br>
           <br>
-          <ion-card-subtitle class="subtitulo" color="primary"> Descripción </ion-card-subtitle> 
-          {{ req.descripcion_requerimiento }} 
+          <ion-card-subtitle class="subtitulo" color="primary"> Descripción </ion-card-subtitle>
+          {{ req.descripcion_requerimiento }}
         </ion-card-content>
-    
+
         <ion-button (click)="btnDelete(req)" expand="block" color="danger" fill="clear">
           Borrar
           <ion-icon slot="start" name="trash-outline"></ion-icon>

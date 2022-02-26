@@ -10,7 +10,7 @@
       <div id="nameApellidoEntregaErrorMessage" *ngIf="nuevaEntregaForm.controls['cliNombreApellidoEntrega'].invalid && (nuevaEntregaForm.controls['cliNombreApellidoEntrega'].dirty || nuevaEntregaForm.controls['cliNombreApellidoEntrega'].touched)">
         <span class="error ion-padding" *ngIf="nuevaEntregaForm.controls['cliNombreApellidoEntrega'].errors.required"> Nombre y Apellido obligatorio </span>
       </div>
-  
+
       <ion-item>
         <ion-label position="floating" color="primary"> Correo del cliente </ion-label>
         <ion-input formControlName="clientEntregaEmail" type="text" placeholder="Correo Electronico" required></ion-input>

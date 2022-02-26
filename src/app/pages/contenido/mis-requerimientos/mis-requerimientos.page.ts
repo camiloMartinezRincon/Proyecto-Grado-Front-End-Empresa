@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { Requirement } from 'src/app/models/requirement';
-import { RestServicesService } from 'src/app/services/rest-services.service';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-mis-requerimientos',
@@ -10,12 +10,14 @@ import { RestServicesService } from 'src/app/services/rest-services.service';
   styleUrls: ['./mis-requerimientos.page.scss'],
 })
 export class MisRequerimientosPage implements OnInit {
-  requerimientos: Requirement[] = [];
+  private requerimientos: any;
   filtrarRequerimientos = '';
 
-  constructor( private restService: RestServicesService ) { }
+  constructor( private restService: ProjectService ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.requerimientos = this.restService.getRequerimeintosOpts();
+  }
 
   btnDelete(requerimiento: any) {
     console.log('borrarr', requerimiento);

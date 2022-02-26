@@ -7,17 +7,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ComponentsModule } from './components/components.module';
+import { LandingPageAutentificacionPage } from './pages/autentificacion/landing-page-autentificacion/landing-page-autentificacion.page';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,
+    LandingPageAutentificacionPage
+  ],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

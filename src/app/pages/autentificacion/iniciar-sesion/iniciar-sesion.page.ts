@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ProjectService } from 'src/app/services/project.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -13,7 +15,7 @@ export class IniciarSesionPage implements OnInit {
   logForm: FormGroup;
   isSubmited = false;
 
-  constructor(private formBuilder: FormBuilder, private alertLogInController: AlertController, private logRouter: Router) { }
+  constructor(private formBuilder: FormBuilder, private alertLogInController: AlertController, private logRouter: Router, private authenticationService : ProjectService) { }
 
   ngOnInit() {
     this.logForm = this.formBuilder.group({
@@ -22,20 +24,27 @@ export class IniciarSesionPage implements OnInit {
     });
   }
 
-  async submitLogForm() {
-    this.isSubmited = true;
-    if (!this.logForm.valid) {
-      let logInAlert = await this.alertLogInController.create({
-        backdropDismiss: false,
-        header: 'Tu usuario o contraseña son incorrectos',
-        buttons: ['Ok']
-      });
-      await logInAlert.present();
-      return false;
-    } else {
-      this.logRouter.navigate(['/proyectos']);
-      console.log(this.logForm.value);
-      console.log("Esta bien")
-    }    
+ submitLogForm() {
+
+    let projectInfo = {
+      corpUserEmail: this.logForm.controls['logEmail'].value,
+      userPassword: this.logForm.controls['logPassword'].value,
+    };
+
+    this.authenticationService.authentication(projectInfo).subscribe((data: any) => {
+      if (data == "ACCEPTED") {
+        localStorage.setItem('userEmail', projectInfo.corpUserEmail);
+        console.log('Procesado');
+        this.logRouter.navigate(['/proyectos']);
+      }else{
+        Swal.fire({
+          title: 'Credenciales Erroneas',
+          text: 'Confirma tus datos',
+          icon: 'error',
+          showConfirmButton: true,
+          confirmButtonText: 'Cerrar',
+        })
+      }
+    });
   }
 }

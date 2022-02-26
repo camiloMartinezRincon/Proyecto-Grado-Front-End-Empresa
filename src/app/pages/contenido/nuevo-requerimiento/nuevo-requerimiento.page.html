@@ -25,7 +25,7 @@
       <ion-item>
         <ion-label color="primary"> Proyecto </ion-label>
         <ion-select formControlName="proyecto" ok-text="Okay" cancel-text="Cancelar" placeholder="Selecionar" required>
-          <ion-select-option *ngFor="let project of projects | async"> {{ project.name }} </ion-select-option>
+          <ion-select-option *ngFor="let project of this.projects"> {{ project.projectName }} </ion-select-option>
         </ion-select>
       </ion-item>
       <div id="proyectoErrorMessage" *ngIf="nuevoRequerimientoForm.controls['proyecto'].invalid && (nuevoRequerimientoForm.controls['proyecto'].dirty || nuevoRequerimientoForm.controls['proyecto'].touched)">

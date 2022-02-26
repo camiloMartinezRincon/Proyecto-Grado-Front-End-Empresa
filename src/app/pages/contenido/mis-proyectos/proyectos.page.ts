@@ -22,36 +22,32 @@ export class ProyectosPage implements OnInit {
     },
     (error) => {
       console.log(error);
-    } 
+    }
     );
   }
 
-  /*
-  btnDelete(project: Project): void {
+
+
+  btnDelete(project: any): void {
     Swal.fire({
       title: '¿Estas seguro?',
-      text: '¿Seguro que deseas eliminar el proyecto: ${project_name} del cliente ${client_name}?',
+      text: '¿Seguro que deseas eliminar el proyecto:' + project.projectName + 'del cliente' + project.clientName+'?',
       icon: 'question',
       showConfirmButton: true,
       confirmButtonText: 'Si, eliminar',
       showCancelButton: true,
       cancelButtonText: 'No, cancelar'
     }).then((result) => {
-      if(result.value) {
-        this.projectService.deleteProject(project.id).subscribe(
-          () => {
-            this.projects = this.projects.filter(pro => pro !== project)
-            Swal.fire(
-              'Proyecto Eliminado!',
-              'Proyecto ${project_name} eliminado con exito',
-              'success'
-            )
-          }
-        )
-      }
+      console.log('nUm',project.projectId)
+        this.projectService.deleteProject(project.projectId).subscribe((data: any) => {
+            console.log('Procesado');
+            this.ngOnInit();
+        });
+
+
     });
   }
-*/
+
   onSearchChange( event ) {
     const texto = event.target.value;
     this.filtrarProyectos = texto;

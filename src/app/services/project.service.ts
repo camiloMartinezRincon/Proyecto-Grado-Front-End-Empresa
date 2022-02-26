@@ -8,7 +8,7 @@ import { Project } from '../models/project';
   providedIn: 'root'
 })
 export class ProjectService {
-  
+
   private endPoint = "http://localhost:8080/api/company";
   httpOptions = {
     headers: new HttpHeaders({
@@ -33,15 +33,32 @@ export class ProjectService {
     };
   }
 
+  //Authentication Service
+  authentication(credentials: any): Observable<any> {
+    return this.http.post<any>(this.endPoint + "/authentication/user", credentials, this.httpOptions);
+  }
+
+  newUser(userInf: any): Observable<any> {
+    return this.http.post<any>(this.endPoint + "/new/user", userInf, this.httpOptions);
+  }
+
   getAllProjects() {
     return this.http.get<any>(this.endPoint + '/projects/info', this.httpOptions);
   }
 
-  deleteProject(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.endPoint}/project/delete/${id}`);
+  getRequerimeintosOpts() {
+    return this.http.get<any>(this.endPoint + '/requirements/info', this.httpOptions);
   }
 
-  createNewProject(project: Project): Observable<Project> {
-    return this.http.post<Project>(`${this.endPoint}/new/project`, project);
+  deleteProject(id: number): Observable<void> {
+    return this.http.delete<any>(`${this.endPoint}/project/delete/`+id);
+  }
+
+  createNewProject(project: any): Observable<Project> {
+    return this.http.post<any>(`${this.endPoint}/new/project`, project);
+  }
+
+  createNewRequirement(requirement: any): Observable<Project> {
+    return this.http.post<any>(`${this.endPoint}/new/requirement`, requirement);
   }
 }
