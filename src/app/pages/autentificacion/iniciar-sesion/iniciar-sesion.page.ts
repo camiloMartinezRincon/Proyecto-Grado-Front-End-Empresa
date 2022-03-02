@@ -15,7 +15,7 @@ export class IniciarSesionPage implements OnInit {
   logForm: FormGroup;
   isSubmited = false;
 
-  constructor(private formBuilder: FormBuilder, private alertLogInController: AlertController, private logRouter: Router, private authenticationService : ProjectService) { }
+  constructor(private formBuilder: FormBuilder, private alertLogInController: AlertController, private logRouter: Router, private authenticationService: ProjectService) { }
 
   ngOnInit() {
     this.logForm = this.formBuilder.group({
@@ -24,7 +24,7 @@ export class IniciarSesionPage implements OnInit {
     });
   }
 
- submitLogForm() {
+  submitLogForm() {
 
     let projectInfo = {
       corpUserEmail: this.logForm.controls['logEmail'].value,
@@ -36,7 +36,7 @@ export class IniciarSesionPage implements OnInit {
         localStorage.setItem('userEmail', projectInfo.corpUserEmail);
         console.log('Procesado');
         this.logRouter.navigate(['/proyectos']);
-      }else{
+      } else {
         Swal.fire({
           title: 'Credenciales Erroneas',
           text: 'Confirma tus datos',

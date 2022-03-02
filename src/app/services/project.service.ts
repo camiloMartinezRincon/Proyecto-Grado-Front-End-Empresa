@@ -33,32 +33,58 @@ export class ProjectService {
     };
   }
 
-  //Authentication Service
+  //Authentication
   authentication(credentials: any): Observable<any> {
     return this.http.post<any>(this.endPoint + "/authentication/user", credentials, this.httpOptions);
   }
-
+  //Register
   newUser(userInf: any): Observable<any> {
     return this.http.post<any>(this.endPoint + "/new/user", userInf, this.httpOptions);
   }
-
+  //Forgot password
+  updatePassword(password: any): Observable<any> {
+    return this.http.put<any>(this.endPoint + "/user/update/password", password, this.httpOptions);
+  }
+  //Get projects By userEmail
   getAllProjects() {
     return this.http.get<any>(this.endPoint + '/projects/info', this.httpOptions);
   }
-
+ //Get requirement options
   getRequerimeintosOpts() {
     return this.http.get<any>(this.endPoint + '/requirements/info', this.httpOptions);
   }
-
+ //Delete project
   deleteProject(id: number): Observable<void> {
     return this.http.delete<any>(`${this.endPoint}/project/delete/`+id);
   }
 
+ //Create new project
   createNewProject(project: any): Observable<Project> {
     return this.http.post<any>(`${this.endPoint}/new/project`, project);
   }
-
+ //Create new requirement
   createNewRequirement(requirement: any): Observable<Project> {
     return this.http.post<any>(`${this.endPoint}/new/requirement`, requirement);
   }
+
+
+//Delete requirements
+deleteRequirement(id: number): Observable<void> {
+  return this.http.delete<any>(`${this.endPoint}/requirement/delete/`+id);
+}
+
+//Create delivery
+createProjectDelivery(prjectDeliveryInf: any): Observable<any> {
+  return this.http.post<any>(`${this.endPoint}/new/project/delivery`, prjectDeliveryInf);
+}
+
+//Get delivery by User
+getDeliveries() {
+  return this.http.get<any>(this.endPoint + '/project/deliveries/info', this.httpOptions);
+}
+
+//Delete delivery
+deleteProjectDelivery(id: number): Observable<void> {
+  return this.http.delete<any>(`${this.endPoint}/project/delivery/delete/`+id);
+}
 }

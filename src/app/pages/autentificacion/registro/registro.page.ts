@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ProjectService } from 'src/app/services/project.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-registro',
@@ -33,10 +35,15 @@ export class RegistroPage implements OnInit {
     };
 
     this.loginService.newUser(register).subscribe((data: any) => {
-      if (data === "ACCEPTED") {
-        console.log('Procesado');
-      }else {
-        this.regRouter.navigate(['/login'])
+      if (data =! null) {
+        this.registerForm.reset();
+        Swal.fire({
+          title: 'Usuario creado con éxito',
+          icon: 'success',
+          showConfirmButton: true,
+          confirmButtonText: 'Cerrar',
+        })
+        this.regRouter.navigate(['/iniciar-sesion'])
       }
     });
   }

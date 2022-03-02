@@ -22,7 +22,10 @@
 
       <ion-item>
         <ion-label position="floating" color="primary"> Nombre del proyecto </ion-label>
-        <ion-input formControlName="nombreProyectoEntrega" type="text" placeholder="Nombre del proyecto" required></ion-input>
+        <ion-select formControlName="nombreProyectoEntrega" type="text" placeholder="Nombre del proyecto" required>
+          <ion-select-option *ngFor="let opt of this.projects"> {{ opt.projectName }} </ion-select-option>
+        </ion-select>
+
       </ion-item>
       <div id="nombreProyectoEntregaErrorMessage" *ngIf="nuevaEntregaForm.controls['nombreProyectoEntrega'].invalid && (nuevaEntregaForm.controls['nombreProyectoEntrega'].dirty || nuevaEntregaForm.controls['nombreProyectoEntrega'].touched)">
         <span class="error ion-padding" *ngIf="nuevaEntregaForm.controls['nombreProyectoEntrega'].errors.required"> Nombre del proyecto obligatorio </span>
@@ -58,7 +61,7 @@
     <ion-grid class="ion-padding">
       <ion-row>
         <ion-col>
-          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="programarNuevaEntrega()" [disabled]="nuevaEntregaForm.invalid"> Programar </ion-button>
+          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="programarNuevaEntrega()" > Programar </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -29,19 +29,20 @@
     <ion-item *ngFor="let req of this.requerimientos |  filtroRequerimientos:filtrarRequerimientos">
       <ion-card>
         <ion-card-header>
-          <ion-card-subtitle class="id-req"> {{ req.project_id }}/{{ req.requerimiento_id }} </ion-card-subtitle>
-          <ion-card-title class="titulo-card" color="primary"> {{ req.tipo_requerimiento }} </ion-card-title>
-          <ion-card-subtitle> Proyecto: {{ req.proyecto }} </ion-card-subtitle>
-          <ion-card-subtitle> Tipo de Requerimiento: {{ req.tipo_requerimiento }} </ion-card-subtitle>
-          <ion-card-subtitle> Prioridad: {{ req.prioridad }} </ion-card-subtitle>
+          <ion-card-subtitle class="id-req"> {{ req.requirementCode }} </ion-card-subtitle>
+          <ion-card-title class="titulo-card" color="primary"> {{ req.requirementTitle }} </ion-card-title>
+          <ion-card-subtitle> Proyecto: {{req.projectName}} </ion-card-subtitle>
+          <ion-card-subtitle> Tipo de Requerimiento: {{ req.requirementType }} </ion-card-subtitle>
+          <ion-card-subtitle> Prioridad: {{ req.requirementPriority }} </ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
+          <!--
           <ion-card-subtitle class="subtitulo" color="primary"> Resumen </ion-card-subtitle>
-          {{ req.resumen_requerimiento }}
-          <br>
+          {{ req.requirementDescription }}
+          <br>  -->
           <br>
           <ion-card-subtitle class="subtitulo" color="primary"> Descripción </ion-card-subtitle>
-          {{ req.descripcion_requerimiento }}
+          {{ req.requirementDescription }}
         </ion-card-content>
 
         <ion-button (click)="btnDelete(req)" expand="block" color="danger" fill="clear">

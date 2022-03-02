@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ProjectService } from 'src/app/services/project.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,7 +14,7 @@ export class ForgotPasswordPage implements OnInit {
   forgPasswordForm: FormGroup;
   isSubmited = false;
 
-  constructor(private formBuilder: FormBuilder, private alertController: AlertController, private forgPasswordRouter: Router) { }
+  constructor(private formBuilder: FormBuilder, private alertController: AlertController, private forgPasswordRouter: Router, private loginService: ProjectService) { }
 
   ngOnInit() {
     this.forgPasswordForm = this.formBuilder.group({
@@ -22,21 +24,24 @@ export class ForgotPasswordPage implements OnInit {
     });
   }
 
-  async submitForgPasswordForm() {
-    this.isSubmited = true;
-    if (!this.forgPasswordForm.valid) {
-      let forgPasswordAlert = await this.alertController.create({
-        backdropDismiss: false,
-        header: 'Debes llenar todos los campos.',
-        buttons: ['Ok']
-      });
-      await forgPasswordAlert.present();
-      return false;
-    } else {
-      this.forgPasswordRouter.navigate(['/iniciar-sesion']);
-      console.log(this.forgPasswordForm.value);
-      console.log("Esta bien")
-    }    
+ public submitForgPasswordForm() {
+    let updatePassword = {
+      corpUserEmail: this.forgPasswordForm.controls['forgPasswordEmail'].value,
+      userPassword: this.forgPasswordForm.controls['forgPasswordNewPass'].value
+    };
+
+    this.loginService.updatePassword(updatePassword).subscribe((data: any) => {
+      if (data =! null) {
+        this.forgPasswordForm.reset();
+        Swal.fire({
+          title: 'Contraseña actualizada con éxito',
+          icon: 'success',
+          showConfirmButton: true,
+          confirmButtonText: 'Cerrar',
+        })
+        this.forgPasswordRouter.navigate(['/iniciar-sesion'])
+      }
+    });
   }
 
 }

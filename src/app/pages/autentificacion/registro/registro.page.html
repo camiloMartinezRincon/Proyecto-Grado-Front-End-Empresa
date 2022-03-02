@@ -10,7 +10,7 @@
       <div id="nameErrorMessage" *ngIf="registerForm.controls['regName'].invalid && (registerForm.controls['regName'].dirty || registerForm.controls['regName'].touched)">
         <span class="error ion-padding" *ngIf="registerForm.controls['regName'].errors.required"> Nombre obligatorio </span>
       </div>
-  
+
       <ion-item>
         <ion-label position="floating" color="primary"> Apellido </ion-label>
         <ion-input formControlName="regLastName" type="text" placeholder="Apellido" required></ion-input>
@@ -18,7 +18,7 @@
       <div id="lastNameErrorMessage" *ngIf="registerForm.controls['regLastName'].invalid && (registerForm.controls['regLastName'].dirty || registerForm.controls['regLastName'].touched)">
         <span class="error ion-padding" *ngIf="registerForm.controls['regLastName'].errors.required"> Apellido obligatorio </span>
       </div>
-  
+
       <ion-item>
         <ion-label position="floating" color="primary"> Correo Corporativo </ion-label>
         <ion-input formControlName="regEmail" type="email" placeholder="Correo Corporativo" required></ion-input>
@@ -27,7 +27,7 @@
         <span class="error ion-padding" *ngIf="registerForm.controls['regEmail'].errors.required"> Correo corporativo obligatorio </span>
         <span class="error ion-padding" *ngIf="registerForm.controls['regEmail'].errors.pattern"> Formato incorrecto </span>
       </div>
-  
+
       <ion-item>
         <ion-label position="floating" color="primary"> Contraseña </ion-label>
         <ion-input formControlName="regPassword" type="password" placeholder="Contraseña" required></ion-input>
@@ -37,7 +37,7 @@
         <span class="error ion-padding" *ngIf="registerForm.controls['regPassword'].errors.maxLength"> Debe tener maximo 15 caracteres </span>
         <span class="error ion-padding" *ngIf="registerForm.controls['regPassword'].errors.minLength"> Debe tener minimo 8 caracteres </span>
       </div>
-  
+
       <ion-item>
         <ion-label position="floating" color="primary"> Confirmar Contraseña </ion-label>
         <ion-input formControlName="regRePassword" type="password" placeholder="Confirmar Contraseña" required></ion-input>
