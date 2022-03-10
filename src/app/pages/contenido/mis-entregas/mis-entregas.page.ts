@@ -14,9 +14,7 @@ export class MisEntregasPage implements OnInit {
   entregas: ProjectDelivery[] = [];
   filtrarEntregas = '';
 
-  constructor(private restService: ProjectService) { }
-
-  ngOnInit() {
+  constructor(private restService: ProjectService) { 
     this.restService.getDeliveries().subscribe((resp: any) => {
       const projects = resp;
       const email = localStorage.getItem('userEmail');
@@ -33,6 +31,8 @@ export class MisEntregasPage implements OnInit {
       }
     });
   }
+
+  ngOnInit() { }
 
   btnDelete(entrega: any) {
     Swal.fire({

@@ -13,14 +13,12 @@ export class MisRequerimientosPage implements OnInit {
   public requerimientos: any;
   filtrarRequerimientos = '';
 
-  constructor( private restService: ProjectService ) { }
-
-  ngOnInit() {
+  constructor( private restService: ProjectService ) { 
     this.restService.getRequerimeintosOpts().subscribe((resp: any) => {
       const projects = resp;
       const email = localStorage.getItem('userEmail');
       console.log('user', email);
-      this.requerimientos = projects.filter(p => p.requerement_usermail == email);
+      this.requerimientos = projects.filter(p => p.ownerMail == email);
       if(this.requerimientos.length == 0){
         Swal.fire({
           title: 'Sin requerimientos',
@@ -32,6 +30,8 @@ export class MisRequerimientosPage implements OnInit {
       }
     });
   }
+
+  ngOnInit() { }
 
   btnDelete(requerimiento: any) {
     Swal.fire({
