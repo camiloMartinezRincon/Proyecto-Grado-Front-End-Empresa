@@ -11,8 +11,13 @@ import { RestServicesService } from 'src/app/services/rest-services.service';
 export class ProfilePage implements OnInit {
   usuarios: Observable<any>;
 
+  name:string = localStorage.getItem('userName');
+  lastname:string = localStorage.getItem('userLastname');
+  email:string = localStorage.getItem('userEmail');
+
   constructor( private restService: RestServicesService ) { }
 
   ngOnInit() {
+
   }
 }

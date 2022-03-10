@@ -32,8 +32,10 @@ export class IniciarSesionPage implements OnInit {
     };
 
     this.authenticationService.authentication(projectInfo).subscribe((data: any) => {
-      if (data == "ACCEPTED") {
+      if (data !=null) {
         localStorage.setItem('userEmail', projectInfo.corpUserEmail);
+        localStorage.setItem('userName', data.userName);
+        localStorage.setItem('userLastname', data.userLastname);
         console.log('Procesado');
         this.logRouter.navigate(['/proyectos']);
       } else {
