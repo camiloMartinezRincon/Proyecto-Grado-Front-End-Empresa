@@ -1,0 +1,43 @@
+<link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+<script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+<app-header-menu title="Reporte Proyectos"></app-header-menu>
+<div class="ion-padding">
+  <div class="row header">
+    <div class="col">
+      Proyecto
+    </div>
+    <!--
+      <div class="col">
+      Servicio
+    </div>
+    -->
+    <div class="col">
+      Cliente
+    </div>
+    <div class="col">
+      Estado
+    </div>
+  </div>
+</div>
+
+<ion-content class="ion-padding">
+  <div class="row" *ngFor="let project of this.listA">
+      <div class="col">
+        {{project.projectName}}
+      </div>
+        <!--
+          <div class="col">
+        {{project.serviceType}}
+      </div>
+        -->
+      <div class="col">
+        {{project.clientName}}
+      </div>
+      <div class="col" *ngIf="project.endDate == 'false'">
+        Inactivo
+      </div>
+      <div class="col" *ngIf="project.endDate == 'true'">
+        Activo
+      </div>
+  </div>
+</ion-content>
