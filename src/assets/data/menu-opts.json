@@ -8,7 +8,7 @@
     "icon": "briefcase-outline",
     "name": "Mis Proyectos",
     "redirectTo": "/proyectos"
-  },  
+  },
   {
     "icon": "document-outline",
     "name": "Nuevo Requerimiento",
@@ -28,5 +28,10 @@
     "icon": "calendar-number-outline",
     "name": "Mis Entregas Programadas",
     "redirectTo": "/mis-entregas"
+  },
+  {
+    "icon": "bar-chart-outline",
+    "name": "Reportes",
+    "redirectTo": "/table-reports"
   }
 ]

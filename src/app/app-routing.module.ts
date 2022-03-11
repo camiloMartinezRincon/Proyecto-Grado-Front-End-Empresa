@@ -52,6 +52,10 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'table-reports',
+    loadChildren: () => import('./pages/table-reports/table-routing.module').then( m => m.TableReportsRoutingModule)
   }
 
 ];
