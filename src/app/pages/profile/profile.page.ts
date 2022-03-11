@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { Router } from '@angular/router';
 import { RestServicesService } from 'src/app/services/rest-services.service';
 
 @Component({
@@ -15,9 +15,12 @@ export class ProfilePage implements OnInit {
   lastname:string = localStorage.getItem('userLastname');
   email:string = localStorage.getItem('userEmail');
 
-  constructor( private restService: RestServicesService ) { }
+  constructor( private restService: RestServicesService, private router: Router ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
 
+  closeSession(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

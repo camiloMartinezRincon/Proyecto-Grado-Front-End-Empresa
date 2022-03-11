@@ -14,14 +14,12 @@ export class ProyectosPage implements OnInit {
   projects: Project[];
   projectsFilter: any[];
 
-  constructor(private projectService: ProjectService, private activatedRoute: ActivatedRoute) { }
-
-  ngOnInit() {
+  constructor(private projectService: ProjectService, private activatedRoute: ActivatedRoute) {
     this.projectService.getAllProjects().subscribe((resp: any) => {
       const projects = resp;
       const email = localStorage.getItem('userEmail');
       console.log('user', email);
-      this.projects = projects.filter(p => p.clientEmail == email);
+      this.projects = projects.filter(p => p.ownerMail == email);
       if (this.projects.length == 0) {
         Swal.fire({
           title: 'Sin proyectos',
@@ -38,6 +36,8 @@ export class ProyectosPage implements OnInit {
       }
     );
   }
+
+  ngOnInit() { }
 
 
 

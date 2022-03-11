@@ -5,7 +5,7 @@ import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
 import Swal from 'sweetalert2';
 import { RestServicesService } from 'src/app/services/rest-services.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nuevo-requerimiento',
@@ -18,7 +18,10 @@ export class NuevoRequerimientoPage implements OnInit {
   projects: Project[] = [];
   nuevoRequerimientoForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private restService: RestServicesService, private projectService: ProjectService) { }
+  constructor(private formBuilder: FormBuilder, 
+              private restService: RestServicesService, 
+              private projectService: ProjectService,
+              private router: Router) { }
 
   ngOnInit() {
     this.nuevoRequerimientoForm = this.formBuilder.group({
@@ -27,7 +30,8 @@ export class NuevoRequerimientoPage implements OnInit {
       proyecto: ['', [Validators.required]],
       prioridadRequerimiento: ['', [Validators.required]],
       ResumenRequerimiento: ['', [Validators.required]],
-      descripcionRequerimiento: ['', [Validators.required]]
+      descripcionRequerimiento: ['', [Validators.required]],
+      ownerMail: [localStorage.getItem('userEmail')]
     });
 
     this.projectService.getAllProjects().subscribe( (resp: any) => {
@@ -48,20 +52,28 @@ export class NuevoRequerimientoPage implements OnInit {
       requirementTitle:this.nuevoRequerimientoForm.controls['ResumenRequerimiento'].value,
       requirementPriority:this.nuevoRequerimientoForm.controls['prioridadRequerimiento'].value,
       requirementDescription:this.nuevoRequerimientoForm.controls['descripcionRequerimiento'].value,
-      requerement_usermail:localStorage.getItem('userEmail')
+      requerement_usermail:localStorage.getItem('userEmail'),
+      ownerMail: this.nuevoRequerimientoForm.controls['ownerMail'].value
     };
 
     this.projectService.createNewRequirement(requirementInf).subscribe((data: any) => {
       if (data =! null) {
         console.log('Procesado');
-        RouterLink['/mis-requerimientos'];
+        Swal.fire({
+          title: 'Requerimiento Creado',
+          icon: 'info',
+          showConfirmButton: true,
+          confirmButtonText: 'Ok',
+        }).then((result) => {
+          this.router.navigate(['/mis-requerimientos']);
+        });
       }else{
         Swal.fire({
-          title: 'Error creación',
+          title: 'Error en la  creación',
           icon: 'error',
           showConfirmButton: true,
           confirmButtonText: 'Cerrar',
-        })
+        });
       }
     });
 

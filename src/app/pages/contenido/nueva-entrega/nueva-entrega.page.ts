@@ -48,18 +48,23 @@ export class NuevaEntregaPage implements OnInit {
     };
 
     this.projectService.createProjectDelivery(projectDelivery).subscribe((data: any) => {
-      if (data = ! null) {
+      if (data =! null) {
+        console.log('Procesado');
         Swal.fire({
-          title: 'Entrega Creada',
-          text: ' En el correo registrado podrás consultar los detalles de la entrega! :) ',
-          icon: 'success',
+          title: 'Entraga Creada',
+          icon: 'info',
+          showConfirmButton: true,
+          confirmButtonText: 'Ok',
+        }).then((result) => {
+          this.router.navigate(['/mis-requerimientos']);
+        });
+      }else{
+        Swal.fire({
+          title: 'Error en la  creación',
+          icon: 'error',
           showConfirmButton: true,
           confirmButtonText: 'Cerrar',
-        })
-
-        this.nuevaEntregaForm.reset();
-        this.router.navigate(['/mis-entregas']);
-
+        });
       }
     });
   }

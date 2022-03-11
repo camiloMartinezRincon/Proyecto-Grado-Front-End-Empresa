@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-project',
@@ -28,7 +29,8 @@ export class NewProjectPage implements OnInit {
       clientMail: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       txtAreaDescription: ['', [Validators.required]],
       startDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]]
+      endDate: ['', [Validators.required]],
+      ownerMail: [localStorage.getItem('userEmail')]
     });
   }
 
@@ -42,13 +44,28 @@ export class NewProjectPage implements OnInit {
       projectDescription: this.newProjForm.controls['txtAreaDescription'].value,
       startDate: this.newProjForm.controls['startDate'].value,
       endDate: this.newProjForm.controls['endDate'].value,
+      ownerMail: this.newProjForm.controls['ownerMail'].value
       //localStorage.setItem('userEmail', projectInfo.corpUserEmail);
     };
 
     this.projectService.createNewProject(projectInfo).subscribe((data: any) => {
       if (data != null) {
         console.log('Procesado');
-        this.router.navigate(['/proyectos']);
+        Swal.fire({
+          title: 'Proyecto Creado',
+          icon: 'info',
+          showConfirmButton: true,
+          confirmButtonText: 'Ok',
+        }).then((result) => {
+          this.router.navigate(['/proyectos']);
+        });
+      }else{
+        Swal.fire({
+          title: 'Error en la  creación',
+          icon: 'error',
+          showConfirmButton: true,
+          confirmButtonText: 'Cerrar',
+        });
       }
     });
   }
