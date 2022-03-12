@@ -1,7 +1,17 @@
 <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
 <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
 <app-header-menu title="Reporte Proyectos"></app-header-menu>
+
+<ion-item>
+  <ion-label color="primary"> Proyectos</ion-label>
+  <ion-label color="gris">{{this.totalPorjects}} </ion-label>
+  <div class="col-4">
+    <ion-label color="primary">Finalizados  {{this.totalCurrent}} </ion-label>
+    <ion-label color="primary">En ejecución  {{this.totalClose}}</ion-label>
+  </div>
+</ion-item>
 <div class="ion-padding">
+
   <div class="row header">
     <div class="col">
       Proyecto
@@ -22,22 +32,22 @@
 
 <ion-content class="ion-padding">
   <div class="row" *ngFor="let project of this.listA">
-      <div class="col">
-        {{project.projectName}}
-      </div>
-        <!--
+    <div class="col">
+      {{project.projectName}}
+    </div>
+    <!--
           <div class="col">
         {{project.serviceType}}
       </div>
         -->
-      <div class="col">
-        {{project.clientName}}
-      </div>
-      <div class="col" *ngIf="project.endDate == 'false'">
-        Inactivo
-      </div>
-      <div class="col" *ngIf="project.endDate == 'true'">
-        Activo
-      </div>
+    <div class="col">
+      {{project.clientName}}
+    </div>
+    <div class="col" *ngIf="project.endDate == 'false'">
+      Inactivo
+    </div>
+    <div class="col" *ngIf="project.endDate == 'true'">
+      Activo
+    </div>
   </div>
 </ion-content>
