@@ -30,8 +30,18 @@
     "redirectTo": "/mis-entregas"
   },
   {
+    "icon": "newspaper-outline",
+    "name": "Cotizaciones",
+    "redirectTo": "/cotizaciones"
+  },
+  {
     "icon": "bar-chart-outline",
     "name": "Reportes",
     "redirectTo": "/table-reports"
+  },
+  {
+    "icon": "cart-outline",
+    "name": "Catalogo de servicios",
+    "redirectTo": "/crear-catalogo-servicios"
   }
 ]

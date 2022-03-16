@@ -1,0 +1,54 @@
+<app-header-menu title="Catalogo de servicios"></app-header-menu>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="catalogoServiciosForm">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary"> Tipo de Servicio </ion-label>
+        <ion-select formControlName="servicio" ok-text="Okay" cancel-text="Cancelar" placeholder="Selecionar" required>
+          <ion-select-option value="Diseño de logos">Diseño de logos</ion-select-option>
+          <ion-select-option value="Creación de marca">Creación de marca</ion-select-option>
+          <ion-select-option value="Diseño multimedia">Diseño multimedia</ion-select-option>
+          <ion-select-option value="Diseño publicitario">Diseño publicitario</ion-select-option>
+          <ion-select-option value="Diseño literario">Diseño literario</ion-select-option>
+          <ion-select-option value="Marketing digital">Marketing digital</ion-select-option>
+          <ion-select-option value="Diseño web">Diseño web</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div id="servicioErrorMessage" *ngIf="catalogoServiciosForm.controls['servicio'].invalid && (catalogoServiciosForm.controls['servicio'].dirty || catalogoServiciosForm.controls['servicio'].touched)">
+        <span class="error ion-padding" *ngIf="catalogoServiciosForm.controls['servicio'].errors.required"> El tipo de servicio es obligatoria </span>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary"> Precio del servicio </ion-label>
+        <ion-input formControlName="precioServicio" type="text" placeholder="Precio del servicio" required></ion-input>
+      </ion-item>
+      <div id="nameErrorMessage" *ngIf="catalogoServiciosForm.controls['precioServicio'].invalid && (catalogoServiciosForm.controls['precioServicio'].dirty || catalogoServiciosForm.controls['precioServicio'].touched)">
+        <span class="error ion-padding" *ngIf="catalogoServiciosForm.controls['precioServicio'].errors.required"> Precio del Servicio </span>
+      </div>
+  
+      <ion-item>
+        <ion-label position="floating" color="primary"> Recurso </ion-label>
+        <ion-input formControlName="recurso" type="text" placeholder="Direccion del Recurso" required></ion-input>
+      </ion-item>
+      <div id="mailErrorMessage" *ngIf="catalogoServiciosForm.controls['recurso'].invalid && (catalogoServiciosForm.controls['recurso'].dirty || catalogoServiciosForm.controls['recurso'].touched)">
+        <span class="error ion-padding" *ngIf="catalogoServiciosForm.controls['recurso'].errors.required"> La Direccion del recurso es obligatorio </span>
+      </div>
+  
+      <ion-item>
+        <ion-label position="floating" color="primary"> Descripción </ion-label>
+        <ion-textarea formControlName="description" placeholder="Descripcion" required></ion-textarea>
+      </ion-item>
+      <div id="descriptionErrorMessage" *ngIf="catalogoServiciosForm.controls['description'].invalid && (catalogoServiciosForm.controls['description'].dirty || catalogoServiciosForm.controls['description'].touched)">
+        <span class="error ion-padding" *ngIf="catalogoServiciosForm.controls['description'].errors.required"> La descripcion es obligatoria </span>
+      </div>
+    </ion-list>
+    <ion-grid class="ion-padding">
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" fill="outline" color="primary" shape="round" type="submit" (click)="crearNuevoCatalogo()" [disabled]="catalogoServiciosForm.invalid"> Crear </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

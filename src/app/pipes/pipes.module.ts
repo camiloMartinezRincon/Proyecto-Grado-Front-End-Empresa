@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FiltroCotizacionesPipe } from './cotizaciones/filtro-cotizaciones.pipe';
 
 import { FiltroEntregasPipe } from './entregas/filtro-entregas.pipe';
 import { FiltroProyectosPipe } from './proyectos/filtro-proyectos.pipe';
@@ -10,12 +11,14 @@ import { FiltroRequerimientosPipe } from './requerimientos/filtro-requerimientos
   declarations: [
     FiltroEntregasPipe,
     FiltroProyectosPipe,
-    FiltroRequerimientosPipe
+    FiltroRequerimientosPipe,
+    FiltroCotizacionesPipe
   ],
   exports: [
     FiltroEntregasPipe,
     FiltroProyectosPipe,
-    FiltroRequerimientosPipe
+    FiltroRequerimientosPipe,
+    FiltroCotizacionesPipe
   ]
 })
 export class PipesModule { }

@@ -56,7 +56,15 @@ const routes: Routes = [
   {
     path: 'table-reports',
     loadChildren: () => import('./pages/table-reports/table-routing.module').then( m => m.TableReportsRoutingModule)
+  },  {
+    path: 'cotizaciones',
+    loadChildren: () => import('./pages/contenido/cotizaciones/cotizaciones.module').then( m => m.CotizacionesPageModule)
+  },
+  {
+    path: 'crear-catalogo-servicios',
+    loadChildren: () => import('./pages/contenido/crear-catalogo-servicios/crear-catalogo-servicios.module').then( m => m.CrearCatalogoServiciosPageModule)
   }
+
 
 ];
 
