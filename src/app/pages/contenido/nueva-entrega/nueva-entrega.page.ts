@@ -22,7 +22,7 @@ export class NuevaEntregaPage implements OnInit {
       const projects = resp;
       const email = localStorage.getItem('userEmail');
       console.log('user', email);
-      this.projects = projects.filter(p => p.clientEmail == email);
+      this.projects = projects.filter(p => p.ownerMail == email);
     });
 
 
@@ -33,7 +33,8 @@ export class NuevaEntregaPage implements OnInit {
       nombreProyectoEntrega: ['', [Validators.required]],
       dateEntrega: ['', [Validators.required]],
       horaEntrega: ['', [Validators.required]],
-      lugarEntrega: ['', [Validators.required]]
+      lugarEntrega: ['', [Validators.required]],
+      ownerMail: [localStorage.getItem('userEmail')]
     });
   }
 
@@ -44,7 +45,8 @@ export class NuevaEntregaPage implements OnInit {
       projectName: this.nuevaEntregaForm.controls['nombreProyectoEntrega'].value,
       deliveryDate: this.nuevaEntregaForm.controls['dateEntrega'].value,
       deliveryHour: this.nuevaEntregaForm.controls['horaEntrega'].value,
-      deliveryPlace: this.nuevaEntregaForm.controls['lugarEntrega'].value
+      deliveryPlace: this.nuevaEntregaForm.controls['lugarEntrega'].value,
+      ownerMail: this.nuevaEntregaForm.controls['ownerMail'].value
     };
 
     this.projectService.createProjectDelivery(projectDelivery).subscribe((data: any) => {
